@@ -1,0 +1,107 @@
+
+[tool.poetry]
+name = "forecast-with-mlops"
+version = "0.2.4"
+description = "This repo contains tools to track short term forecasting models."
+authors = ["karin wu <karin.wu@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "forecasting_with_mlops"}]
+
+[tool.poetry.dependencies]
+dask = "2023.12.0"
+gcsfs = "^2023.6.0"
+google-cloud-storage = ">=2.10.0"
+python = ">=3.10,<3.12"
+pandas = "^2.1.3"
+pandas-gbq = "^0.19.2"
+pandera = ">=0.17.2"
+pathy = "0.10.2"
+pyarrow = ">=14.0.1"
+dbt = "^1.0.0.35.4"
+dbt-bigquery = "^1.7.2"
+dbt-core = "^1.7.15"
+omegaconf = "^2.3.0"
+aiohttp = ">=3.11.7"
+neuralprophet = "^0.9.0"
+mlflow = "^2.18.0"
+optuna = "^4.1.0"
+pyrootutils = "^1.0.4"
+
+[tool.poetry.group.evaluation.dependencies]
+streamlit = ">=1.30.0"
+plotly = ">=5.18.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.3.0"
+isort = "^5.12.0"
+
+[tool.poetry.group.training.dependencies]
+scikit-learn = ">=1.5.0"
+
+[tool.poetry.group.plotting.dependencies]
+matplotlib = "^3.7.1"
+seaborn = "^0.13.0"
+
+[tool.poetry.group.test.dependencies]
+flake8 = "^6.0.0"
+pytest = "^7.2.1"
+pytest_cov = "4.1.0"
+hypothesis = "^6.81.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 79
+target-version = ["py310"]
+include = '\.pyi?$'
+force-exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.nox
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[tool.poetry.group.publish]
+optional = true
+
+[tool.poetry.group.publish.dependencies]
+MarkupSafe = "3.0.1"
+twine = "^5.1.1"
+
+[tool.poetry_bumpversion.file."scada_ami_comparison/__init__.py"]
