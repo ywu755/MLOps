@@ -1,0 +1,35 @@
+
+name: short_term_forecasting_national_grid
+
+raw_path: gcp/raw
+cleansed_path: gcp/clean
+out_data: gcp/out_data
+cleansed_file: Cleansed_MW
+
+samples_frac: 0.3
+
+# define hours for which we want a prediction
+hours: 24
+
+# parameter for prophet model 
+input_name: MW
+output_name: yhat1
+timestamp: Timestamp
+# seasonality options are: True, False
+daily_seasonality: True 
+weekly_seasonality: True
+yearly_seasonality: True
+# optional parameter
+country_holidays: None
+
+# optional parameters
+# Turn on AR terms if a neural prophet model is needed. 
+# The default AR-Net configuration does not contain hidden layers, and is functionally identical to a classic AR model.
+# If we consider a neural network with at least one hidden layer, learning Rate matters when training a Neural Network.
+# For a high enough learning rate (probably > 0.1), the gradient seems to vanish and forces the AR net output to 0. An easy way to void this issue is to set the learning rate at a low enough value, likely around 0.01 to 0.001.
+learning_rate: 0.003
+# n_lags is the AR order. It is commonly set to twice the innermost periodicity or twice the forecast horizon. 
+n_lags: 0
+growth: Linear
+num_hidden_layers: 4
+d_hidden: 8
