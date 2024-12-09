@@ -1,0 +1,39 @@
+defaults:
+  - _self_
+  - MLFlow.yaml
+tracking_uri: mlruns
+track_dict:
+  code: &dict_code
+    name: code
+    description: Helper code modules
+    location: ../
+    output_location: code
+    type: artifacts
+  model: &dict_model
+    name: model
+    description: full model
+    location:
+    output_location: gnn
+    type: model
+  metric: &dict_metrics
+    name: metrics
+    description: error metrics
+    location:
+    type: metrics
+  param: &dict_params
+    name: params
+    description: model parameters
+    location:
+    type: parameters
+  weights: &dict_weights
+    name: weights
+    description: loss function weights
+    location:
+    artifact_file: weights.txt
+    type: artifacts
+to_track:
+  - *dict_code
+  - *dict_model
+  - *dict_metrics
+  - *dict_params
+  - *dict_weights
